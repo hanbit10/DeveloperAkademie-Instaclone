@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="script.js"></script>
+
+    <link rel="icon" href="/bitGram/assets/icons/bitgramwhite.svg" alt="" />
+    <title>BitGram</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body onload="render()">
+    <header w3-include-html="/bitGram/components/header/header.html"></header>
+
+    <section class="container">
+      <div id="content" class="content">
+        <section id="top-content" class="top-content"></section>
+        <section id="post-content"></section>
+      </div>
+
+      <!-- <div id="fullscreen-bg" class="fullscreen-bg d-none">
+        <div id="fullscreen-foto"></div>
+
+        <div class="left-arrow-container no-select" id="leftArrow"></div>
+
+        <div class="right-arrow-container no-select" id="rightArrow"></div>
+
+        <div class="close-container no-select">
+          <img
+            class="close-btn no-select"
+            onclick="closeFullScreen()"
+            src="/bitGram/assets/icons/icon-x-white.svg"
+            alt=""
+          />
+        </div>
+      </div> -->
+      <footer w3-include-html="/bitGram/components/footer/footer.html"></footer>
+    </section>
+
+    <script>
+      includeHTML();
+    </script>
+  </body>
+</html>

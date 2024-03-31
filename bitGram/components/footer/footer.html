@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .footer-img {
+        width: 48px;
+      }
+
+      .footer-social-logo {
+        margin: 8px;
+        width: 100%;
+        max-width: 48px;
+        min-width: 24px;
+      }
+
+      .footer-social-container {
+        display: flex;
+      }
+
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        color: black;
+        text-decoration: none;
+      }
+
+      .footer-link:hover {
+        background-color: #e8e8e898;
+        border-radius: 50%;
+      }
+
+      .footer-impressum {
+        color: black;
+        text-decoration: none;
+      }
+
+      .footer-impressum:hover {
+        color: rgb(172, 172, 172);
+        text-decoration: underline;
+      }
+
+      .copy-right {
+        display: flex;
+      }
+
+      @media screen and (max-width: 550px) {
+        .copy-right {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <a href="/bitGram/index.html" class="footer-logo">
+        <img
+          class="footer-img"
+          src="/bitGram/assets/icons/bitgramblack.svg"
+          alt=""
+        />
+        <h2>BitGram</h2>
+      </a>
+
+      <div>
+        Copyright © 2024
+        <br />
+        <div class="copy-right">
+          <div>Site designed by&nbsp;</div>
+          <div>Hanbit Chang.</div>
+        </div>
+        App icons by <a href="https://icons8.com/">icons8</a>
+      </div>
+    </div>
+
+    <div class="footer-social-container">
+      <a class="footer-link" href="https://github.com/hanbit10">
+        <img
+          class="footer-social-logo"
+          src="/bitGram/assets/icons/icons8-git-lined.svg"
+          alt=""
+      /></a>
+
+      <a class="footer-link" href="https://facebook.com/">
+        <img
+          class="footer-social-logo"
+          src="/bitGram/assets/icons/icons8-facebook-lined.svg"
+          alt=""
+      /></a>
+
+      <a class="footer-link" href="https://www.instagram.com/">
+        <img
+          class="footer-social-logo"
+          src="/bitGram/assets/icons/icons8-instagram-lined.svg"
+          alt=""
+      /></a>
+    </div>
+    <!-- <a class="footer-impressum" href="#">Impressum & Datenschutz</a> -->
+  </body>
+</html>

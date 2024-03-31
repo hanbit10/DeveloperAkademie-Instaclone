@@ -1,0 +1,177 @@
+[
+  {
+    "userName": "HansamChang",
+    "location": "Wien, Austria",
+    "headline": "Spring is coming back",
+    "image": "/bitGram/assets/imgs/posts/hansam_vienna.jpg",
+    "comments": [
+      "This is a great picture!",
+      "I love this flower!",
+      "Omg so beautiful",
+      "I want to visit you!"
+    ],
+    "commentUser": ["JohnMiller", "ElenaMartinez", "SophieBrown", "LiamWilson"],
+    "likes": 363
+  },
+  {
+    "userName": "HanbitChang",
+    "location": "Maastricht, Netherlands",
+    "headline": "Birds and a Person on the stairs",
+    "image": "/bitGram/assets/imgs/posts/hanbit_netherlands.jpg",
+    "comments": [
+      "Great picture!",
+      "What are the stairs",
+      "Omg so beautiful",
+      "I want to visit this place!"
+    ],
+    "commentUser": ["DavidGarcia", "ElenaMartinez", "JohnMiller", "LiamWilson"],
+    "likes": 423
+  },
+  {
+    "userName": "ElenaMartinez",
+    "location": "Paris, France",
+    "headline": "Exploring the City of Love!",
+    "image": "",
+    "comments": [
+      "Love this city!",
+      "So much history!",
+      "Fantastic atmosphere!",
+      "Can't wait to come back!"
+    ],
+    "commentUser": ["LiamWilson", "AliceSmith", "SophieBrown", "JohnMiller"],
+    "likes": 69
+  },
+  {
+    "userName": "EmmaWhite",
+    "location": "Rome, Italy",
+    "headline": "Adventures in Ancient Rome",
+    "image": "",
+    "comments": [
+      "Amazing architecture!",
+      "The palce is incredible!",
+      "So many things to see!",
+      "Feels like home!"
+    ],
+    "commentUser": ["EmmaWhite", "DavidGarcia", "LiamWilson", "JohnMiller"],
+    "likes": 48
+  },
+  {
+    "userName": "SophieBrown",
+    "location": "Barcelona, Spain",
+    "headline": "Sunny Days in Barcelona",
+    "image": "",
+    "comments": [
+      "The beaches are stunning!",
+      "Great nightlife!",
+      "Colorful streets!",
+      "A perfect getaway!"
+    ],
+    "commentUser": ["JohnMiller", "SophieBrown", "EmmaWhite", "AliceSmith"],
+    "likes": 22
+  },
+  {
+    "userName": "EmmaWhite",
+    "location": "London, United Kingdom",
+    "headline": "London Calling!",
+    "image": "",
+    "comments": [
+      "London is magical!",
+      "I miss the pubs!",
+      "Great shot!",
+      "Charming city!",
+      "So much to explore!"
+    ],
+    "commentUser": [
+      "AliceSmith",
+      "DavidGarcia",
+      "EmmaWhite",
+      "JohnMiller",
+      "SophieBrown"
+    ],
+    "likes": 72
+  },
+  {
+    "userName": "DavidGarcia",
+    "location": "Berlin, Germany",
+    "headline": "Berlin Vibes",
+    "image": "",
+    "comments": [
+      "Berlin is so hip!",
+      "Love the street art!",
+      "Memories!",
+      "Can't get enough of this city!"
+    ],
+    "commentUser": ["SophieBrown", "JohnMiller", "AliceSmith", "EmmaWhite"],
+    "likes": 58
+  },
+  {
+    "userName": "LiamWilson",
+    "location": "Amsterdam, Netherlands",
+    "headline": "Canal Cruising in Amsterdam",
+    "image": "",
+    "comments": [
+      "Amsterdam is breathtaking!",
+      "Dream destination!",
+      "Wish I was there!",
+      "Canal views are amazing!"
+    ],
+    "commentUser": ["SophieBrown", "EmmaWhite", "AliceSmith", "JohnMiller"],
+    "likes": 9
+  },
+  {
+    "userName": "DavidGarcia",
+    "location": "Vienna, Austria",
+    "headline": "Music and History in Vienna",
+    "image": "",
+    "comments": [
+      "Vienna is stunning!",
+      "Love the architecture!",
+      "Great memories!",
+      "Music everywhere!"
+    ],
+    "commentUser": ["ElenaMartinez", "LiamWilson", "DavidGarcia", "AliceSmith"],
+    "likes": 72
+  },
+  {
+    "userName": "JohnMiller",
+    "location": "Athens, Greece",
+    "headline": "Discovering Ancient Athens",
+    "image": "",
+    "comments": [
+      "Greece is amazing!",
+      "History everywhere!",
+      "Incredible experience!",
+      "Greek cuisine is heavenly!"
+    ],
+    "commentUser": ["DavidGarcia", "AliceSmith", "LiamWilson", "EmmaWhite"],
+    "likes": 61
+  },
+  {
+    "userName": "ElenaMartinez",
+    "location": "Prague, Czech Republic",
+    "headline": "Magical Moments in Prague",
+    "image": "",
+    "comments": [
+      "Prague is like a fairy tale!",
+      "Charming city!",
+      "Love the culture!",
+      "Magical atmosphere!"
+    ],
+    "commentUser": ["EmmaWhite", "ElenaMartinez", "AliceSmith", "SophieBrown"],
+    "likes": 86
+  },
+  {
+    "userName": "SophieBrown",
+    "location": "Florence, Italy",
+    "headline": "Art and History in Florence",
+    "image": "",
+    "comments": [
+      "Florence stole my heart!",
+      "Art lover's paradise!",
+      "Bellissimo!",
+      "Could stay here forever!"
+    ],
+    "commentUser": ["DavidGarcia", "ElenaMartinez", "JohnMiller", "LiamWilson"],
+    "likes": 17
+  }
+]
