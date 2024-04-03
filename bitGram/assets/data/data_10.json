@@ -4,6 +4,8 @@
     "location": "Wien, Austria",
     "headline": "Spring is coming back",
     "image": "/bitGram/assets/imgs/posts/hansam_vienna.jpg",
+    "heart": true,
+    "showComments": true,
     "comments": [
       "This is a great picture!",
       "I love this flower!",
@@ -18,6 +20,8 @@
     "location": "Maastricht, Netherlands",
     "headline": "Birds and a Person on the stairs",
     "image": "/bitGram/assets/imgs/posts/hanbit_netherlands.jpg",
+    "heart": true,
+    "showComments": true,
     "comments": [
       "Great picture!",
       "What are the stairs",
@@ -32,6 +36,8 @@
     "location": "Paris, France",
     "headline": "Exploring the City of Love!",
     "image": "",
+    "heart": true,
+    "showComments": true,
     "comments": [
       "Love this city!",
       "So much history!",
@@ -46,6 +52,8 @@
     "location": "Rome, Italy",
     "headline": "Adventures in Ancient Rome",
     "image": "",
+    "heart": true,
+    "showComments": true,
     "comments": [
       "Amazing architecture!",
       "The palce is incredible!",
@@ -60,6 +68,8 @@
     "location": "Barcelona, Spain",
     "headline": "Sunny Days in Barcelona",
     "image": "",
+    "heart": true,
+    "showComments": true,
     "comments": [
       "The beaches are stunning!",
       "Great nightlife!",
@@ -74,6 +84,8 @@
     "location": "London, United Kingdom",
     "headline": "London Calling!",
     "image": "",
+    "heart": true,
+    "showComments": true,
     "comments": [
       "London is magical!",
       "I miss the pubs!",
@@ -95,6 +107,8 @@
     "location": "Berlin, Germany",
     "headline": "Berlin Vibes",
     "image": "",
+    "heart": true,
+    "showComments": true,
     "comments": [
       "Berlin is so hip!",
       "Love the street art!",
@@ -109,6 +123,8 @@
     "location": "Amsterdam, Netherlands",
     "headline": "Canal Cruising in Amsterdam",
     "image": "",
+    "heart": true,
+    "showComments": true,
     "comments": [
       "Amsterdam is breathtaking!",
       "Dream destination!",
@@ -123,6 +139,8 @@
     "location": "Vienna, Austria",
     "headline": "Music and History in Vienna",
     "image": "",
+    "heart": true,
+    "showComments": true,
     "comments": [
       "Vienna is stunning!",
       "Love the architecture!",
@@ -137,6 +155,8 @@
     "location": "Athens, Greece",
     "headline": "Discovering Ancient Athens",
     "image": "",
+    "heart": true,
+    "showComments": true,
     "comments": [
       "Greece is amazing!",
       "History everywhere!",
@@ -151,6 +171,8 @@
     "location": "Prague, Czech Republic",
     "headline": "Magical Moments in Prague",
     "image": "",
+    "heart": true,
+    "showComments": true,
     "comments": [
       "Prague is like a fairy tale!",
       "Charming city!",
@@ -165,6 +187,8 @@
     "location": "Florence, Italy",
     "headline": "Art and History in Florence",
     "image": "",
+    "heart": true,
+    "showComments": true,
     "comments": [
       "Florence stole my heart!",
       "Art lover's paradise!",

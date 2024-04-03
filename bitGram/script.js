@@ -16,20 +16,49 @@ let posts = [];
 let profiles = [];
 
 function render() {
-  let topContent = document.getElementById("top-content");
-  let postContent = document.getElementById("post-content");
-  console.log(posts.length);
-
-  for (let i = 0; i < profiles.length; i++) {
-    topContent.innerHTML += getProfiles(i);
+  if (
+    ["heartArray", "likesArray", "commentArray"].every(
+      (key) => localStorage.getItem(key) !== null
+    )
+  ) {
+    getHeart();
+    getLikes();
+    getComments();
   }
 
+  renderProfiles();
+  renderPosts();
+  renderSuggestions();
+}
+
+/**renders each content */
+function renderPosts() {
+  let postContent = document.getElementById("post-content");
+  postContent.innerHTML = "";
   for (let i = 0; i < posts.length; i++) {
     postContent.innerHTML += getPost(i);
   }
 }
 
-function getProfiles(index) {
+function renderProfiles() {
+  let topContent = document.getElementById("top-content");
+  topContent.innerHTML = "";
+  for (let i = 0; i < profiles.length; i++) {
+    topContent.innerHTML += getTopContent(i);
+  }
+}
+
+function renderSuggestions() {
+  let suggestionsContent = document.getElementById("suggestionsContent");
+  suggestionsContent.innerHTML = "";
+  for (let i = 2; i < profiles.length - 2; i++) {
+    suggestionsContent.innerHTML += getSuggestions(i);
+  }
+}
+
+/**get each content*/
+
+function getTopContent(index) {
   let profile = profiles[index];
   return /*html*/ `
     <div class="top-profile">
@@ -37,8 +66,7 @@ function getProfiles(index) {
         <img src="${profile["profileImage"]}" alt="">
       </div>
       <span>${profile["userName"]}</span>
-    </div>
-  `;
+    </div>`;
 }
 
 function getPost(index) {
@@ -46,37 +74,224 @@ function getPost(index) {
   let pIndex = profiles.findIndex((obj) => obj.userName == post["userName"]);
   return /*html*/ `
   <div class="post-card">
-    <div class="profile">
-      <img  src="${profiles[pIndex]["profileImage"]}">
-      <h2>${post["userName"]}</h2>
+    <div class="post-profile">
+      ${getPostProfile(index, pIndex)}
     </div>
-    <span>${post["location"]}</span> <br>
-    <img class="foto-box" src="${post["image"]}" alt="">
-    <b>${post["userName"]}&nbsp;</b> 
-    <span>${post["headline"]}</span> <br>
-    <div class="comment">
+    <div class="column">
+      ${getPostImage(index)}
+      ${getPostInteractions(index)}
+      ${getPostComments(index)}
     </div>
+  </div>`;
+}
 
-    <span>${post["likes"]} likes</span>
+function getSuggestions(index) {
+  let profile = profiles[index];
+  return /*html*/ `
+  <div class="suggestions">
+    <div class="suggestions-profile">
+      <img src="${profile["profileImage"]}" alt="">
+      <span>${profile["userName"]}</span>
+    </div>
+    <b>Follow</b>
   </div>
+  
   `;
 }
 
+/**These functions are used to get the Post contents */
+function getPostProfile(index, pIndex) {
+  let post = posts[index];
+  return /*html*/ `      
+    <img  src="${profiles[pIndex]["profileImage"]}">
+    <div class="column">
+      <b>${post["userName"]}</b>
+      <span>${post["location"]}</span>
+    </div>`;
+}
+
+function getPostImage(index) {
+  let post = posts[index];
+  return /*html*/ `
+    <img class="foto-box" ondblclick="plusHeartIcon(${index})" 
+    src="${post["image"]}" alt="">
+    <img class="heart-icon" alt="" id="heartIcon${index}"
+    src="/bitGram/assets/icons/heart-svgrepo-com-black.svg" onload="getHeartIcon(${index})" onclick="switchHeartIcon(${index})">`;
+}
+
+function getPostInteractions(index) {
+  let post = posts[index];
+  return /*html*/ `
+    <b>${post["likes"]} likes</b>
+    <div class="row">    
+      <b>${post["userName"]}&nbsp;</b> 
+      <div>${post["headline"]}</div> <br>
+    </div>
+`;
+}
+
+function getPostComments(index) {
+  let post = posts[index];
+  return /*html*/ `
+    <div class="show-all-comments" onclick="showAllComments(${index})"> 
+      show all ${post["comments"].length} comments
+    </div>
+    <div id="comment${index}" class="comment">
+      ${getCommentProfiles(post["commentUser"], post["comments"])}
+      <div class="row">
+        <input id="commentInput${index}" class="comment-input" placeholder="add a comment">
+        <button onclick="addComment(${index})" class="comment-button">Add</button>
+      </div>
+    </div>`;
+}
+
+/** In getPostImage */
+function getHeartIcon(index) {
+  const img = document.getElementById(`heartIcon${index}`);
+  let post = posts[index];
+  if (post["heart"]) {
+    img.src = "/bitGram/assets/icons/heart-svgrepo-com-black.svg";
+  } else {
+    img.src = "/bitGram/assets/icons/heart-svgrepo-com-red.svg";
+  }
+}
+
+/** In getPostImage */
+function switchHeartIcon(index) {
+  const img = document.getElementById(`heartIcon${index}`);
+  let post = posts[index];
+  post["heart"] = !post["heart"];
+  if (post["heart"]) {
+    post["likes"] = post["likes"] - 1;
+    saveHeart();
+    saveLikes();
+    render();
+  } else {
+    post["likes"] = post["likes"] + 1;
+    saveHeart();
+    saveLikes();
+    render();
+  }
+}
+
+/** In getPostImage */
+function plusHeartIcon(index) {
+  const img = document.getElementById(`heartIcon${index}`);
+  let post = posts[index];
+  if (!post["heart"]) {
+    saveHeart();
+    saveLikes();
+    render();
+  } else {
+    post["heart"] = !post["heart"];
+    post["likes"] = post["likes"] + 1;
+    saveHeart();
+    saveLikes();
+    render();
+  }
+}
+
+/** In getPostComments */
+function showAllComments(index) {
+  let comment = document.getElementById(`comment${index}`);
+  let post = posts[index];
+  post["showComments"] = !post["showComments"];
+
+  if (post["showComments"]) {
+    comment.classList.add("d-none");
+  } else {
+    comment.classList.remove("d-none");
+  }
+}
+
+/** In getPostComments */
 function getCommentProfiles(commentUsers, comments) {
   let commentProfiles = "";
   for (let i = 0; i < commentUsers.length; i++) {
     let pIndex = profiles.findIndex((obj) => obj.userName == commentUsers[i]);
     commentProfiles += /*html*/ `
-      <div class="profile">
-        <img src="${profiles[pIndex]["profileImage"]}" alt="">
+      <div>
+        <div id="commentProfile" class="comment-profile">
+          <img src="${profiles[pIndex]["profileImage"]}" alt="">
+          <div class="column">          
+            <b>${commentUsers[i]}</b>
+            <span>${comments[i]}</span>
+          </div> 
+        </div>
+        <br>
       </div>
- 
-      <span>${commentUsers[i]}</span>
-      <span>${comments[i]}</span>
-      <br>
       `;
   }
   return commentProfiles;
+}
+
+/**In getPostComments */
+function addComment(index) {
+  let input = document.getElementById(`commentInput${index}`);
+  let post = posts[index];
+  let profile = profiles[1];
+  post["comments"].push(input.value);
+  post["commentUser"].push(profile["userName"]);
+  saveComments();
+  render();
+}
+
+/** Save and Get Values from the Local Storage */
+function saveHeart() {
+  let heartArray = [];
+  for (let i = 0; i < posts.length; i++) {
+    heartArray[i] = posts[i]["heart"];
+  }
+  localStorage.setItem("heartArray", JSON.stringify(heartArray));
+}
+
+function saveLikes() {
+  let likesArray = [];
+  for (let i = 0; i < posts.length; i++) {
+    likesArray[i] = posts[i]["likes"];
+  }
+  localStorage.setItem("likesArray", JSON.stringify(likesArray));
+}
+
+function saveComments() {
+  let commentArray = [];
+  let commentProfileArray = [];
+  for (let i = 0; i < posts.length; i++) {
+    commentArray[i] = posts[i]["comments"];
+    commentProfileArray[i] = posts[i]["commentUser"];
+  }
+  localStorage.setItem("commentArray", JSON.stringify(commentArray));
+  localStorage.setItem(
+    "commentProfileArray",
+    JSON.stringify(commentProfileArray)
+  );
+}
+
+function getHeart() {
+  const heartItem = localStorage.getItem("heartArray");
+  let heartArray = JSON.parse(heartItem);
+  for (let i = 0; i < posts.length; i++) {
+    posts[i]["heart"] = heartArray[i];
+  }
+}
+
+function getLikes() {
+  const likesItem = localStorage.getItem("likesArray");
+  let likesArray = JSON.parse(likesItem);
+  for (let i = 0; i < posts.length; i++) {
+    posts[i]["likes"] = likesArray[i];
+  }
+}
+
+function getComments() {
+  const commentItem = localStorage.getItem("commentArray");
+  const commentProfile = localStorage.getItem("commentProfileArray");
+  let commentArray = JSON.parse(commentItem);
+  let commentProfileArray = JSON.parse(commentProfile);
+  for (let i = 0; i < posts.length; i++) {
+    posts[i]["comments"] = commentArray[i];
+    posts[i]["commentUser"] = commentProfileArray[i];
+  }
 }
 
 async function printJSON() {
@@ -89,3 +304,11 @@ async function printJSON() {
 }
 
 printJSON();
+
+// function getHeartIcon(index) {
+//   let post = posts[index];
+//   let heartIcon = localStorage.getItem("heartIcon");
+//   heartIcon = heartIcon.replaceAll('"', "");
+//   post["heartIcon"] = heartIcon;
+//   console.log(post["heartIcon"]);
+// }

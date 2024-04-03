@@ -30,5 +30,9 @@
   {
     "userName": "JohnMiller",
     "profileImage": "/bitGram/assets/imgs/profilpicture/8johnmiller.jpg"
+  },
+  {
+    "userName": "AliceSmith",
+    "profileImage": "/bitGram/assets/imgs/profilpicture/9alicesmith.jpg"
   }
 ]
