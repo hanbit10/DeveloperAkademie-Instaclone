@@ -24,6 +24,7 @@ function render() {
     getHeart();
     getLikes();
     getComments();
+    getAllComments();
   }
 
   renderProfiles();
@@ -133,8 +134,8 @@ function getPostInteractions(index) {
 function getPostComments(index) {
   let post = posts[index];
   return /*html*/ `
-    <div class="show-all-comments" onclick="showAllComments(${index})"> 
-      show all ${post["comments"].length} comments
+    <div id="showAllComments${index}" class="show-all-comments" onclick="showAllComments(${index})"> 
+      hide comments
     </div>
     <div id="comment${index}" class="comment">
       ${getCommentProfiles(post["commentUser"], post["comments"])}
@@ -143,6 +144,38 @@ function getPostComments(index) {
         <button onclick="addComment(${index})" class="comment-button text-btn">Add</button>
       </div>
     </div>`;
+}
+
+/** In getPostComments */
+function showAllComments(index) {
+  let comment = document.getElementById(`comment${index}`);
+  let showComment = document.getElementById(`showAllComments${index}`);
+  let post = posts[index];
+  post["showComments"] = !post["showComments"];
+
+  if (post["showComments"]) {
+    comment.classList.remove("d-none");
+    showComment.innerHTML = `hide comments`;
+  } else {
+    comment.classList.add("d-none");
+    showComment.innerHTML = `show all ${post["comments"].length} comments`;
+  }
+  saveAllComments();
+}
+
+/**In getPostComments */
+function addComment(index) {
+  let input = document.getElementById(`commentInput${index}`);
+  if (input.value == "") {
+    alert("fill in");
+  } else {
+    let post = posts[index];
+    let profile = profiles[1];
+    post["comments"].push(input.value);
+    post["commentUser"].push(profile["userName"]);
+    saveComments();
+    render();
+  }
 }
 
 /** In getPostImage */
@@ -163,15 +196,12 @@ function switchHeartIcon(index) {
   post["heart"] = !post["heart"];
   if (post["heart"]) {
     post["likes"] = post["likes"] - 1;
-    saveHeart();
-    saveLikes();
-    render();
   } else {
     post["likes"] = post["likes"] + 1;
-    saveHeart();
-    saveLikes();
-    render();
   }
+  saveHeart();
+  saveLikes();
+  render();
 }
 
 /** In getPostImage */
@@ -179,29 +209,13 @@ function plusHeartIcon(index) {
   const img = document.getElementById(`heartIcon${index}`);
   let post = posts[index];
   if (!post["heart"]) {
-    saveHeart();
-    saveLikes();
-    render();
   } else {
     post["heart"] = !post["heart"];
     post["likes"] = post["likes"] + 1;
-    saveHeart();
-    saveLikes();
-    render();
   }
-}
-
-/** In getPostComments */
-function showAllComments(index) {
-  let comment = document.getElementById(`comment${index}`);
-  let post = posts[index];
-  post["showComments"] = !post["showComments"];
-
-  if (post["showComments"]) {
-    comment.classList.add("d-none");
-  } else {
-    comment.classList.remove("d-none");
-  }
+  saveHeart();
+  saveLikes();
+  render();
 }
 
 /** In getPostComments */
@@ -216,28 +230,14 @@ function getCommentProfiles(commentUsers, comments) {
           <div class="column">          
             <b>${commentUsers[i]}</b>
             <span>${comments[i]}</span>
-          </div> 
+          </div>
+          <div>x</div> 
         </div>
         <br>
       </div>
       `;
   }
   return commentProfiles;
-}
-
-/**In getPostComments */
-function addComment(index) {
-  let input = document.getElementById(`commentInput${index}`);
-  if (input.value == "") {
-    alert("fill in");
-  } else {
-    let post = posts[index];
-    let profile = profiles[1];
-    post["comments"].push(input.value);
-    post["commentUser"].push(profile["userName"]);
-    saveComments();
-    render();
-  }
 }
 
 /** Save and Get Values from the Local Storage */
@@ -269,6 +269,23 @@ function saveComments() {
     "commentProfileArray",
     JSON.stringify(commentProfileArray)
   );
+}
+
+function saveAllComments() {
+  let arr = [];
+  for (let i = 0; i < posts.length; i++) {
+    arr[i] = posts[i]["showComments"];
+  }
+
+  localStorage.setItem("showComments", JSON.stringify(arr));
+}
+
+function getAllComments() {
+  const item = localStorage.getItem("showComments");
+  let arr = JSON.parse(item);
+  for (let i = 0; i < posts.length; i++) {
+    posts[i]["showComments"] = arr[i];
+  }
 }
 
 function getHeart() {
