@@ -93,7 +93,7 @@ function getSuggestions(index) {
       <img src="${profile["profileImage"]}" alt="">
       <span>${profile["userName"]}</span>
     </div>
-    <b>Follow</b>
+    <b class="text-btn">Follow</b>
   </div>
   
   `;
@@ -139,8 +139,8 @@ function getPostComments(index) {
     <div id="comment${index}" class="comment">
       ${getCommentProfiles(post["commentUser"], post["comments"])}
       <div class="row">
-        <input id="commentInput${index}" class="comment-input" placeholder="add a comment">
-        <button onclick="addComment(${index})" class="comment-button">Add</button>
+        <input id="commentInput${index}" class="comment-input" placeholder="add a comment" required>
+        <button onclick="addComment(${index})" class="comment-button text-btn">Add</button>
       </div>
     </div>`;
 }
@@ -228,12 +228,16 @@ function getCommentProfiles(commentUsers, comments) {
 /**In getPostComments */
 function addComment(index) {
   let input = document.getElementById(`commentInput${index}`);
-  let post = posts[index];
-  let profile = profiles[1];
-  post["comments"].push(input.value);
-  post["commentUser"].push(profile["userName"]);
-  saveComments();
-  render();
+  if (input.value == "") {
+    alert("fill in");
+  } else {
+    let post = posts[index];
+    let profile = profiles[1];
+    post["comments"].push(input.value);
+    post["commentUser"].push(profile["userName"]);
+    saveComments();
+    render();
+  }
 }
 
 /** Save and Get Values from the Local Storage */

@@ -152,6 +152,7 @@ header {
   background-color: #e8e8e8;
   border-radius: 2px;
   border: 0.1px solid rgba(86, 86, 86, 0.285);
+  object-fit: cover;
 }
 
 .foto-box:hover {
@@ -198,9 +199,23 @@ header {
   color: blue;
 }
 
+.show-all-comments:hover {
+  color: rgba(0, 0, 255, 0.5);
+  cursor: pointer;
+}
+
 .heart-icon {
   width: 30px;
   height: 30px;
+}
+
+.text-btn {
+  color: blue;
+  cursor: pointer;
+}
+
+.text-btn:hover {
+  color: rgba(0, 0, 255, 0.5);
 }
 
 .no-select {
