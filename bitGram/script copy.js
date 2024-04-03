@@ -134,7 +134,7 @@ function getPostComments(index) {
       hide comments
     </div>
     <div id="comment${index}" class="comment">
-      ${getCommentProfiles(post["commentUser"], post["comments"])}
+      ${getCommentProfiles(index, post["commentUser"], post["comments"])}
       <div class="row">
         <input id="commentInput${index}" class="comment-input" placeholder="add a comment" required>
         <button onclick="addComment(${index})" class="comment-button text-btn">Add</button>
@@ -170,8 +170,8 @@ function addComment(index) {
     post["comments"].push(input.value);
     post["commentUser"].push(profile["userName"]);
     saveComments();
+    render();
   }
-  render();
 }
 
 /** In getPostImage */
@@ -215,9 +215,8 @@ function plusHeartIcon(index) {
 }
 
 /** In getPostComments */
-function getCommentProfiles(commentUsers, comments) {
+function getCommentProfiles(index, commentUsers, comments) {
   let commentProfiles = "";
-
   for (let i = 0; i < commentUsers.length; i++) {
     let pIndex = profiles.findIndex((obj) => obj.userName == commentUsers[i]);
     commentProfiles += /*html*/ `
@@ -225,11 +224,10 @@ function getCommentProfiles(commentUsers, comments) {
           <div class="row">
             <img class="comment-profile-img" src="${profiles[pIndex]["profileImage"]}" alt="">
             <div class="column comment-profile-content">          
-              <b>${commentUsers[i]}</b>
-              <span >${comments[i]}</span>
+              <b>${commentUsers[i]}</b> <span >${comments[i]}</span>
             </div>
           </div>
-          <div class='delete-btn' onclick="deleteComment(${i})">${deleteCommentUser(i, commentUsers)}
+          <div class='delete-btn' onclick="deleteComment(${i}, ${index})">${deleteCommentUser(i, commentUsers)}
           </div> 
         </div>
       `;
@@ -237,10 +235,18 @@ function getCommentProfiles(commentUsers, comments) {
   return commentProfiles;
 }
 
+function deleteComment(i, index) {
+  let post = posts[index];
+  post["comments"].splice(i, 1);
+  post["commentUser"].splice(i, 1);
+  saveComments();
+  render();
+}
+
 /** In getCommentProfiles */
-function deleteCommentUser(i, commentUsers) {
+function deleteCommentUser(index, commentUsers) {
   let img = "<img class='delete-btn-img'  src='/bitGram/assets/icons/iconxx.svg'/>";
-  if (commentUsers[i] == "HanbitChang") {
+  if (commentUsers[index] == "HanbitChang") {
     return img;
   } else {
     return "";
@@ -249,30 +255,30 @@ function deleteCommentUser(i, commentUsers) {
 
 /** Save and Get Values from the Local Storage */
 function saveHeart() {
-  let heartArray = [];
+  let arr = [];
   for (let i = 0; i < posts.length; i++) {
-    heartArray[i] = posts[i]["heart"];
+    arr[i] = posts[i]["heart"];
   }
-  localStorage.setItem("heartArray", JSON.stringify(heartArray));
+  localStorage.setItem("heartArray", JSON.stringify(arr));
 }
 
 function saveLikes() {
-  let likesArray = [];
+  let arr = [];
   for (let i = 0; i < posts.length; i++) {
-    likesArray[i] = posts[i]["likes"];
+    arr[i] = posts[i]["likes"];
   }
-  localStorage.setItem("likesArray", JSON.stringify(likesArray));
+  localStorage.setItem("likesArray", JSON.stringify(arr));
 }
 
 function saveComments() {
-  let commentArray = [];
-  let commentProfileArray = [];
+  let arr1 = [];
+  let arr2 = [];
   for (let i = 0; i < posts.length; i++) {
-    commentArray[i] = posts[i]["comments"];
-    commentProfileArray[i] = posts[i]["commentUser"];
+    arr1[i] = posts[i]["comments"];
+    arr2[i] = posts[i]["commentUser"];
   }
-  localStorage.setItem("commentArray", JSON.stringify(commentArray));
-  localStorage.setItem("commentProfileArray", JSON.stringify(commentProfileArray));
+  localStorage.setItem("commentArray", JSON.stringify(arr1));
+  localStorage.setItem("commentProfileArray", JSON.stringify(arr2));
 }
 
 function saveAllComments() {
@@ -293,48 +299,37 @@ function getAllComments() {
 }
 
 function getHeart() {
-  const heartItem = localStorage.getItem("heartArray");
-  let heartArray = JSON.parse(heartItem);
+  const item = localStorage.getItem("heartArray");
+  let arr = JSON.parse(item);
   for (let i = 0; i < posts.length; i++) {
-    posts[i]["heart"] = heartArray[i];
+    posts[i]["heart"] = arr[i];
   }
 }
 
 function getLikes() {
-  const likesItem = localStorage.getItem("likesArray");
-  let likesArray = JSON.parse(likesItem);
+  const item = localStorage.getItem("likesArray");
+  let arr = JSON.parse(item);
   for (let i = 0; i < posts.length; i++) {
-    posts[i]["likes"] = likesArray[i];
+    posts[i]["likes"] = arr[i];
   }
 }
 
 function getComments() {
-  const commentItem = localStorage.getItem("commentArray");
-  const commentProfile = localStorage.getItem("commentProfileArray");
-  let commentArray = JSON.parse(commentItem);
-  let commentProfileArray = JSON.parse(commentProfile);
+  const item1 = localStorage.getItem("commentArray");
+  const item2 = localStorage.getItem("commentProfileArray");
+  let arr1 = JSON.parse(item1);
+  let arr2 = JSON.parse(item2);
   for (let i = 0; i < posts.length; i++) {
-    posts[i]["comments"] = commentArray[i];
-    posts[i]["commentUser"] = commentProfileArray[i];
+    posts[i]["comments"] = arr1[i];
+    posts[i]["commentUser"] = arr2[i];
   }
-  // console.log(posts[0]["comments"]);
 }
 
 async function printJSON() {
   const responsePost = await fetch("/bitGram/assets/data/data_10.json");
   const responseProfile = await fetch("/bitGram/assets/data/profil.json");
-  const jsonPost = await responsePost.json();
-  const jsonProfile = await responseProfile.json();
-  posts = jsonPost;
-  profiles = jsonProfile;
+  posts = await responsePost.json();
+  profiles = await responseProfile.json();
 }
 
 printJSON();
-
-// function getHeartIcon(index) {
-//   let post = posts[index];
-//   let heartIcon = localStorage.getItem("heartIcon");
-//   heartIcon = heartIcon.replaceAll('"', "");
-//   post["heartIcon"] = heartIcon;
-//   console.log(post["heartIcon"]);
-// }

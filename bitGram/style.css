@@ -167,19 +167,48 @@ header {
 .comment-profile {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 6px;
+  border-radius: 5px;
 }
 
 .comment-profile:hover {
-  background-color: aliceblue;
+  background-color: #c9c9c9;
   cursor: pointer;
 }
 
-.comment-profile img {
+.delete-btn {
+  width: 50px;
+}
+
+.delete-btn-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 8px;
+  display: none;
+  margin: 0;
+}
+
+.delete-btn-img:hover {
+  background-color: #e8e8e8;
+}
+
+.comment-profile:hover .delete-btn-img {
+  display: block;
+}
+
+.comment-profile-img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
   margin-right: 8px;
+}
+
+.comment-profile-content {
+  width: 80%;
 }
 
 .comment-input {
@@ -248,6 +277,8 @@ header {
 
 .row {
   display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 /* @media screen and (max-width: 1024px) {
