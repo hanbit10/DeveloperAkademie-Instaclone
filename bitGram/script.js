@@ -30,6 +30,10 @@ function render() {
     getAllComments();
   }
 
+  if (localStorage.getItem("bookmarkArray") !== null) {
+    getBookMark();
+  }
+
   renderProfiles();
   renderPosts();
   renderSuggestions();
@@ -129,9 +133,8 @@ function getPostImage(index) {
         <img class="icon" src="/bitGram/assets/icons/comment-regular.svg" alt="">
         <img class="icon" src="/bitGram/assets/icons/paper-plane-regular.svg" alt="">
       </div>
-      <img class="icon" src="/bitGram/assets/icons/bookmark-regular.svg" alt="">
+      <img class="icon" id="bookmarkIcon${index}" onload="getBookmarkIcon(${index})" onclick="switchBookmarkIcon(${index})" src="/bitGram/assets/icons/bookmark-regular.svg" alt="">
     </div>
-
     `;
 }
 
@@ -194,6 +197,20 @@ function addComment(index) {
 }
 
 /** In getPostImage */
+function plusHeartIcon(index) {
+  const img = document.getElementById(`heartIcon${index}`);
+  let post = posts[index];
+  if (!post["heart"]) {
+  } else {
+    post["heart"] = !post["heart"];
+    post["likes"] = post["likes"] + 1;
+  }
+  saveHeart();
+  saveLikes();
+  render();
+}
+
+/** In getPostImage */
 function getHeartIcon(index) {
   const img = document.getElementById(`heartIcon${index}`);
   let post = posts[index];
@@ -205,6 +222,27 @@ function getHeartIcon(index) {
 }
 
 /** In getPostImage */
+function getBookmarkIcon(index) {
+  const img = document.getElementById(`bookmarkIcon${index}`);
+  let post = posts[index];
+
+  if (post["bookmark"]) {
+    img.src = "/bitGram/assets/icons/bookmark-regular.svg";
+  } else {
+    img.src = "/bitGram/assets/icons/bookmark-solid.svg";
+  }
+}
+
+/** In getPostImage */
+function switchBookmarkIcon(index) {
+  const img = document.getElementById(`bookmarkIcon${index}`);
+  let post = posts[index];
+  post["bookmark"] = !post["bookmark"];
+  saveBookMark();
+  render();
+}
+
+/** In getPostImage */
 function switchHeartIcon(index) {
   const img = document.getElementById(`heartIcon${index}`);
   let post = posts[index];
@@ -212,20 +250,6 @@ function switchHeartIcon(index) {
   if (post["heart"]) {
     post["likes"] = post["likes"] - 1;
   } else {
-    post["likes"] = post["likes"] + 1;
-  }
-  saveHeart();
-  saveLikes();
-  render();
-}
-
-/** In getPostImage */
-function plusHeartIcon(index) {
-  const img = document.getElementById(`heartIcon${index}`);
-  let post = posts[index];
-  if (!post["heart"]) {
-  } else {
-    post["heart"] = !post["heart"];
     post["likes"] = post["likes"] + 1;
   }
   saveHeart();
@@ -307,6 +331,22 @@ function saveAllComments() {
   }
 
   localStorage.setItem("showComments", JSON.stringify(arr));
+}
+
+function saveBookMark() {
+  let arr = [];
+  for (let i = 0; i < posts.length; i++) {
+    arr[i] = posts[i]["bookmark"];
+  }
+  localStorage.setItem("bookmarkArray", JSON.stringify(arr));
+}
+
+function getBookMark() {
+  const item = localStorage.getItem("bookmarkArray");
+  let arr = JSON.parse(item);
+  for (let i = 0; i < posts.length; i++) {
+    posts[i]["bookmark"] = arr[i];
+  }
 }
 
 function getAllComments() {

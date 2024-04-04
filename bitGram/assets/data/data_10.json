@@ -5,13 +5,9 @@
     "headline": "Spring is coming back",
     "image": "/bitGram/assets/imgs/posts/hansam_vienna.jpg",
     "heart": true,
+    "bookmark": true,
     "showComments": true,
-    "comments": [
-      "This is a great picture!",
-      "I love this flower!",
-      "Omg so beautiful",
-      "I want to visit you!"
-    ],
+    "comments": ["This is a great picture!", "I love this flower!", "Omg so beautiful", "I want to visit you!"],
     "commentUser": ["JohnMiller", "ElenaMartinez", "SophieBrown", "LiamWilson"],
     "likes": 363
   },
@@ -21,13 +17,9 @@
     "headline": "Birds and a Person on the stairs",
     "image": "/bitGram/assets/imgs/posts/hanbit_netherlands.jpg",
     "heart": true,
+    "bookmark": true,
     "showComments": true,
-    "comments": [
-      "Great picture!",
-      "What are the stairs",
-      "Omg so beautiful",
-      "I want to visit this place!"
-    ],
+    "comments": ["Great picture!", "What are the stairs", "Omg so beautiful", "I want to visit this place!"],
     "commentUser": ["DavidGarcia", "ElenaMartinez", "JohnMiller", "LiamWilson"],
     "likes": 423
   },
@@ -37,13 +29,9 @@
     "headline": "Exploring the City of Love!",
     "image": "",
     "heart": true,
+    "bookmark": true,
     "showComments": true,
-    "comments": [
-      "Love this city!",
-      "So much history!",
-      "Fantastic atmosphere!",
-      "Can't wait to come back!"
-    ],
+    "comments": ["Love this city!", "So much history!", "Fantastic atmosphere!", "Can't wait to come back!"],
     "commentUser": ["LiamWilson", "AliceSmith", "SophieBrown", "JohnMiller"],
     "likes": 69
   },
@@ -53,13 +41,9 @@
     "headline": "Adventures in Ancient Rome",
     "image": "",
     "heart": true,
+    "bookmark": true,
     "showComments": true,
-    "comments": [
-      "Amazing architecture!",
-      "The palce is incredible!",
-      "So many things to see!",
-      "Feels like home!"
-    ],
+    "comments": ["Amazing architecture!", "The palce is incredible!", "So many things to see!", "Feels like home!"],
     "commentUser": ["EmmaWhite", "DavidGarcia", "LiamWilson", "JohnMiller"],
     "likes": 48
   },
@@ -69,13 +53,9 @@
     "headline": "Sunny Days in Barcelona",
     "image": "",
     "heart": true,
+    "bookmark": true,
     "showComments": true,
-    "comments": [
-      "The beaches are stunning!",
-      "Great nightlife!",
-      "Colorful streets!",
-      "A perfect getaway!"
-    ],
+    "comments": ["The beaches are stunning!", "Great nightlife!", "Colorful streets!", "A perfect getaway!"],
     "commentUser": ["JohnMiller", "SophieBrown", "EmmaWhite", "AliceSmith"],
     "likes": 22
   },
@@ -85,21 +65,10 @@
     "headline": "London Calling!",
     "image": "",
     "heart": true,
+    "bookmark": true,
     "showComments": true,
-    "comments": [
-      "London is magical!",
-      "I miss the pubs!",
-      "Great shot!",
-      "Charming city!",
-      "So much to explore!"
-    ],
-    "commentUser": [
-      "AliceSmith",
-      "DavidGarcia",
-      "EmmaWhite",
-      "JohnMiller",
-      "SophieBrown"
-    ],
+    "comments": ["London is magical!", "I miss the pubs!", "Great shot!", "Charming city!", "So much to explore!"],
+    "commentUser": ["AliceSmith", "DavidGarcia", "EmmaWhite", "JohnMiller", "SophieBrown"],
     "likes": 72
   },
   {
@@ -108,13 +77,9 @@
     "headline": "Berlin Vibes",
     "image": "",
     "heart": true,
+    "bookmark": true,
     "showComments": true,
-    "comments": [
-      "Berlin is so hip!",
-      "Love the street art!",
-      "Memories!",
-      "Can't get enough of this city!"
-    ],
+    "comments": ["Berlin is so hip!", "Love the street art!", "Memories!", "Can't get enough of this city!"],
     "commentUser": ["SophieBrown", "JohnMiller", "AliceSmith", "EmmaWhite"],
     "likes": 58
   },
@@ -124,13 +89,9 @@
     "headline": "Canal Cruising in Amsterdam",
     "image": "",
     "heart": true,
+    "bookmark": true,
     "showComments": true,
-    "comments": [
-      "Amsterdam is breathtaking!",
-      "Dream destination!",
-      "Wish I was there!",
-      "Canal views are amazing!"
-    ],
+    "comments": ["Amsterdam is breathtaking!", "Dream destination!", "Wish I was there!", "Canal views are amazing!"],
     "commentUser": ["SophieBrown", "EmmaWhite", "AliceSmith", "JohnMiller"],
     "likes": 9
   },
@@ -140,13 +101,9 @@
     "headline": "Music and History in Vienna",
     "image": "",
     "heart": true,
+    "bookmark": true,
     "showComments": true,
-    "comments": [
-      "Vienna is stunning!",
-      "Love the architecture!",
-      "Great memories!",
-      "Music everywhere!"
-    ],
+    "comments": ["Vienna is stunning!", "Love the architecture!", "Great memories!", "Music everywhere!"],
     "commentUser": ["ElenaMartinez", "LiamWilson", "DavidGarcia", "AliceSmith"],
     "likes": 72
   },
@@ -156,13 +113,9 @@
     "headline": "Discovering Ancient Athens",
     "image": "",
     "heart": true,
+    "bookmark": true,
     "showComments": true,
-    "comments": [
-      "Greece is amazing!",
-      "History everywhere!",
-      "Incredible experience!",
-      "Greek cuisine is heavenly!"
-    ],
+    "comments": ["Greece is amazing!", "History everywhere!", "Incredible experience!", "Greek cuisine is heavenly!"],
     "commentUser": ["DavidGarcia", "AliceSmith", "LiamWilson", "EmmaWhite"],
     "likes": 61
   },
@@ -172,13 +125,9 @@
     "headline": "Magical Moments in Prague",
     "image": "",
     "heart": true,
+    "bookmark": true,
     "showComments": true,
-    "comments": [
-      "Prague is like a fairy tale!",
-      "Charming city!",
-      "Love the culture!",
-      "Magical atmosphere!"
-    ],
+    "comments": ["Prague is like a fairy tale!", "Charming city!", "Love the culture!", "Magical atmosphere!"],
     "commentUser": ["EmmaWhite", "ElenaMartinez", "AliceSmith", "SophieBrown"],
     "likes": 86
   },
@@ -188,13 +137,9 @@
     "headline": "Art and History in Florence",
     "image": "",
     "heart": true,
+    "bookmark": true,
     "showComments": true,
-    "comments": [
-      "Florence stole my heart!",
-      "Art lover's paradise!",
-      "Bellissimo!",
-      "Could stay here forever!"
-    ],
+    "comments": ["Florence stole my heart!", "Art lover's paradise!", "Bellissimo!", "Could stay here forever!"],
     "commentUser": ["DavidGarcia", "ElenaMartinez", "JohnMiller", "LiamWilson"],
     "likes": 17
   }
