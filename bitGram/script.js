@@ -47,7 +47,7 @@ function renderPosts() {
 function renderProfiles() {
   let topContent = document.getElementById("top-content");
   topContent.innerHTML = "";
-  for (let i = 0; i < profiles.length; i++) {
+  for (let i = 0; i < 9; i++) {
     topContent.innerHTML += getTopContent(i);
   }
 }
@@ -55,7 +55,7 @@ function renderProfiles() {
 function renderSuggestions() {
   let suggestionsContent = document.getElementById("suggestionsContent");
   suggestionsContent.innerHTML = "";
-  for (let i = 2; i < profiles.length - 2; i++) {
+  for (let i = 9; i < profiles.length; i++) {
     suggestionsContent.innerHTML += getSuggestions(i);
   }
 }
@@ -95,7 +95,10 @@ function getSuggestions(index) {
   <div class="suggestions">
     <div class="suggestions-profile">
       <img src="${profile["profileImage"]}" alt="">
-      <span>${profile["userName"]}</span>
+      <div class="column">
+        <span>${profile["userName"]}</span>
+        <span class="text-blue">Suggested for you</span>
+      </div>
     </div>
     <b class="text-btn">Follow</b>
   </div>
@@ -119,8 +122,17 @@ function getPostImage(index) {
   return /*html*/ `
     <img class="foto-box" ondblclick="plusHeartIcon(${index})" 
     src="${post["image"]}" alt="">
-    <img class="heart-icon" alt="" id="heartIcon${index}"
-    src="/bitGram/assets/icons/heart-svgrepo-com-black.svg" onload="getHeartIcon(${index})" onclick="switchHeartIcon(${index})">`;
+    <div class="row jc-spacebtw">
+      <div>
+        <img class="icon" alt="" id="heartIcon${index}"
+        src="/bitGram/assets/icons/heart-regular.svg" onload="getHeartIcon(${index})" onclick="switchHeartIcon(${index})">
+        <img class="icon" src="/bitGram/assets/icons/comment-regular.svg" alt="">
+        <img class="icon" src="/bitGram/assets/icons/paper-plane-regular.svg" alt="">
+      </div>
+      <img class="icon" src="/bitGram/assets/icons/bookmark-regular.svg" alt="">
+    </div>
+
+    `;
 }
 
 function getPostInteractions(index) {
@@ -186,9 +198,9 @@ function getHeartIcon(index) {
   const img = document.getElementById(`heartIcon${index}`);
   let post = posts[index];
   if (post["heart"]) {
-    img.src = "/bitGram/assets/icons/heart-svgrepo-com-black.svg";
+    img.src = "/bitGram/assets/icons/heart-regular.svg";
   } else {
-    img.src = "/bitGram/assets/icons/heart-svgrepo-com-red.svg";
+    img.src = "/bitGram/assets/icons/heart-solid.svg";
   }
 }
 
