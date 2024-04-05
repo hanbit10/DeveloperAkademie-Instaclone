@@ -15,34 +15,9 @@ async function includeHTML() {
 let posts = [];
 let profiles = [];
 
-const keys = ["heartArray", "likesArray", "commentArray", "showComments", "bookmarkArray", "obj"];
-
-const handlers = {
-  heartArray: getHeart,
-  likesArray: getLikes,
-  commentArray: getComments,
-  showComments: getAllComments,
-  bookmarkArray: getBookMark,
-  obj: getObj,
-};
-
 function render() {
-  if (localStorage.getItem("heartArray") !== null) {
-    getHeart();
-  }
-  if (localStorage.getItem("likesArray") !== null) {
-    getLikes();
-  }
   if (localStorage.getItem("commentArray") !== null) {
     getComments();
-  }
-
-  if (localStorage.getItem("showComments") !== null) {
-    getAllComments();
-  }
-
-  if (localStorage.getItem("bookmarkArray") !== null) {
-    getBookMark();
   }
 
   if (localStorage.getItem("obj") !== null) {
@@ -327,22 +302,6 @@ function deleteCommentUser(index, commentUsers) {
 }
 
 /** Save and Get Values from the Local Storage */
-function saveHeart() {
-  let arr = [];
-  for (let i = 0; i < posts.length; i++) {
-    arr[i] = posts[i]["heart"];
-  }
-  localStorage.setItem("heartArray", JSON.stringify(arr));
-}
-
-function saveLikes() {
-  let arr = [];
-  for (let i = 0; i < posts.length; i++) {
-    arr[i] = posts[i]["likes"];
-  }
-  localStorage.setItem("likesArray", JSON.stringify(arr));
-}
-
 function saveComments() {
   let arr1 = [];
   let arr2 = [];
@@ -354,23 +313,6 @@ function saveComments() {
   localStorage.setItem("commentProfileArray", JSON.stringify(arr2));
 }
 
-function saveAllComments() {
-  let arr = [];
-  for (let i = 0; i < posts.length; i++) {
-    arr[i] = posts[i]["showComments"];
-  }
-
-  localStorage.setItem("showComments", JSON.stringify(arr));
-}
-
-function saveBookMark() {
-  let arr = [];
-  for (let i = 0; i < posts.length; i++) {
-    arr[i] = posts[i]["bookmark"];
-  }
-  localStorage.setItem("bookmarkArray", JSON.stringify(arr));
-}
-
 function saveObj() {
   localStorage.setItem("obj", JSON.stringify(posts));
 }
@@ -378,38 +320,6 @@ function saveObj() {
 function getObj() {
   const item = localStorage.getItem("obj");
   posts = JSON.parse(item);
-}
-
-function getBookMark() {
-  const item = localStorage.getItem("bookmarkArray");
-  let arr = JSON.parse(item);
-  for (let i = 0; i < posts.length; i++) {
-    posts[i]["bookmark"] = arr[i];
-  }
-}
-
-function getAllComments() {
-  const item = localStorage.getItem("showComments");
-  let arr = JSON.parse(item);
-  for (let i = 0; i < posts.length; i++) {
-    posts[i]["showComments"] = arr[i];
-  }
-}
-
-function getHeart() {
-  const item = localStorage.getItem("heartArray");
-  let arr = JSON.parse(item);
-  for (let i = 0; i < posts.length; i++) {
-    posts[i]["heart"] = arr[i];
-  }
-}
-
-function getLikes() {
-  const item = localStorage.getItem("likesArray");
-  let arr = JSON.parse(item);
-  for (let i = 0; i < posts.length; i++) {
-    posts[i]["likes"] = arr[i];
-  }
 }
 
 function getComments() {
