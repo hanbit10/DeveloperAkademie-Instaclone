@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./profile.js"></script>
+    <script src="/bitGram/script.js"></script>
+    <link rel="stylesheet" href="/bitGram/style.css" />
+    <style>
+      .profile {
+        width: 100%;
+        display: flex;
+      }
+
+      .profile-img {
+        width: 100%;
+        max-width: 200px;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: 50%;
+        margin: min(60px, 5%);
+        margin-top: 30px;
+      }
+
+      .profile-status {
+        margin-left: 50px;
+      }
+
+      .post-section {
+        width: 100%;
+        margin-top: 30px;
+        border-top: 0.1px solid rgba(86, 86, 86, 0.285);
+      }
+
+      .post-content {
+        margin-top: 30px;
+      }
+
+      .get-post {
+        width: 100%;
+        max-width: 390px;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+      }
+
+      .user-name {
+        font-size: 24px;
+        margin-bottom: 30px;
+      }
+
+      .content {
+        max-width: 1200px;
+      }
+
+      .mr-30 {
+        margin-right: 30px;
+      }
+
+      .profile-text {
+        padding-top: 30px;
+        max-width: 550px;
+      }
+    </style>
+  </head>
+  <body onload="render()">
+    <header w3-include-html="/bitGram/components/header/header.html"></header>
+    <section class="container">
+      <div id="content" class="content">
+        <section id="profile" class="profile">
+          <img id="profileImg" class="profile-img" src="" alt="" />
+          <div class="profile-status">
+            <div id="profileContent" class="profile-content"></div>
+            <div class="row">
+              <span class="mr-30"><b>384</b> followers</span>
+              <span class="mr-30"><b>109</b> following</span>
+            </div>
+            <div class="profile-text">
+              <b> I am Web Developer </b>
+              <br />
+              <span>
+                🚀 Just finished an exhilarating bootcamp with Developer Akademie and crafted my very own InstaClone! 💻 Ready to dive into
+                the world of coding and unleash creativity! 🌟 #DeveloperAkademie #CodeLife #InstaCloneJourney"
+              </span>
+            </div>
+          </div>
+        </section>
+        <section class="post-section">
+          <div id="posts" class="post-content"></div>
+        </section>
+      </div>
+    </section>
+    <div w3-include-html="/bitGram/components/edit/edit.html"></div>
+    <footer w3-include-html="/bitGram/components/footer/footer.html"></footer>
+    <script>
+      includeHTML();
+    </script>
+  </body>
+</html>

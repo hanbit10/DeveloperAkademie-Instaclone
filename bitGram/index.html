@@ -18,16 +18,17 @@
         <section id="post-content" class="post-content"></section>
       </div>
       <div class="column suggestionsSection">
-        <div
-          id="suggestionsSection"
-          w3-include-html="/bitGram/components/suggestions/suggestions.html"
-        ></div>
-        <footer
-          w3-include-html="/bitGram/components/footer/footer.html"
-        ></footer>
+        <div id="suggestionsSection" w3-include-html="/bitGram/components/suggestions/suggestions.html"></div>
+        <footer w3-include-html="/bitGram/components/footer/footer.html"></footer>
+      </div>
+      <div id="fullProfileBg" class="full-profile-bg d-none" onclick="hideFullProfile()">
+        <div class="column jc-center">
+          <div id="fullProfileUser" class="full-profile-user"></div>
+          <img id="fullProfile" class="full-profile" />
+        </div>
       </div>
     </section>
-
+    <div w3-include-html="/bitGram/components/edit/edit.html"></div>
     <script>
       includeHTML();
     </script>

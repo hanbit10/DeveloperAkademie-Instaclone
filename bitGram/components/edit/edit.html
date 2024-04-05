@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .full-edit {
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 1;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .full-edit-container {
+        width: 800px;
+        height: 530px;
+        border-radius: 10px;
+        background-color: #e8e8e8;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .close-btn {
+        position: absolute;
+        left: 8px;
+      }
+
+      .edit-btn {
+        position: absolute;
+        right: 16px;
+      }
+
+      textarea {
+        background-color: #e8e8e8;
+        border: 0;
+        outline: 0;
+        padding: 16px;
+        height: 200px;
+        width: 100%;
+      }
+
+      input {
+        font-size: 20px;
+        background-color: #e8e8e8;
+        border: 0;
+        outline: 0;
+        padding: 16px;
+        width: 100%;
+      }
+
+      .full-edit-img {
+        width: 100%;
+        max-width: 500px;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+      }
+
+      .full-edit-title {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        padding: 8px;
+      }
+
+      .full-edit-content {
+        display: flex;
+      }
+
+      .full-edit-profile {
+        width: 50px;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: 50%;
+        padding: 8px;
+      }
+    </style>
+    <link rel="stylesheet" href="/bitGram/style.css" />
+  </head>
+  <body>
+    <header w3-include-html="/bitGram/components/header/header.html"></header>
+    <section class="container">
+      <div id="content" class="content">
+        <div id="fullEdit" class="full-edit d-none">
+          <div id="fulleditContainer" class="full-edit-container">
+            <div class="full-edit-title">
+              <div class="close-btn" onclick="closeFullEdit()">xxxxxxxxx</div>
+              <b>Create a new post</b>
+              <div class="edit-btn" onclick="saveFullEdit()">Edit</div>
+            </div>
+            <div class="full-edit-content">
+              <img class="full-edit-img" src="/bitGram/assets//imgs/posts/16.jpg" alt="" />
+
+              <div class="column">
+                <div class="row">
+                  <img class="full-edit-profile" src="/bitGram/assets/imgs/profilpicture/2hbc.jpg" alt="" />
+                  <div><b>HanbitChang</b></div>
+                </div>
+                <input id="editInput" type="text" placeholder="edit headline" />
+                <textarea name="text" id="textarea" cols="30" rows="10" placeholder="write a text"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      includeHTML();
+    </script>
+  </body>
+</html>

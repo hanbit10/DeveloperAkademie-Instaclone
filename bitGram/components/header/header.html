@@ -4,9 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
+      section {
+        padding-left: 20px;
+      }
+
       .header-logo {
+        width: 100%;
+        height: 100px;
+
         display: flex;
-        justify-content: space-between;
         align-items: center;
         text-decoration: none;
         color: black;
@@ -30,17 +36,46 @@
         border-radius: 50%;
         /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
       }
+
+      .links {
+        text-decoration: none;
+        color: black;
+        border-radius: 5px;
+        padding: 18px;
+        margin-top: 8px;
+        width: 70%;
+      }
+
+      .links:hover {
+        background-color: #e8e8e8;
+      }
+
+      .links span {
+        margin-left: 8px;
+      }
     </style>
     <title>Document</title>
   </head>
   <body>
-    <a href="/bitGram/index.html" class="header-logo">
-      <img
-        class="header-img"
-        src="/bitGram/assets/icons/bitgramblack.svg"
-        alt=""
-      />
-      <h1>BitGram</h1>
-    </a>
+    <section>
+      <a href="/bitGram/index.html" class="header-logo">
+        <img class="header-img" src="/bitGram/assets/icons/bitgramblack.svg" alt="" />
+        <h1>BitGram</h1>
+      </a>
+    </section>
+    <section class="column">
+      <a class="links row" href="/bitGram/index.html">
+        <img class="icon" src="/bitGram/assets/icons/header/house-solid.svg" alt="" />
+        <span>Home</span></a
+      >
+      <a class="links row" href="javascript:void(0)" onclick="openFullEdit()">
+        <img class="icon" src="/bitGram/assets/icons/header/square-plus-regular.svg" alt="" />
+        <span>Create</span></a
+      >
+      <a class="links row" href="/bitGram/pages/profile/profile.html">
+        <img class="icon" src="/bitGram/assets/icons/header/user-solid.svg" alt="" />
+        <span>Profile</span></a
+      >
+    </section>
   </body>
 </html>

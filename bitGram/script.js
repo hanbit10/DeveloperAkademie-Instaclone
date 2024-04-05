@@ -15,6 +15,17 @@ async function includeHTML() {
 let posts = [];
 let profiles = [];
 
+const keys = ["heartArray", "likesArray", "commentArray", "showComments", "bookmarkArray", "obj"];
+
+const handlers = {
+  heartArray: getHeart,
+  likesArray: getLikes,
+  commentArray: getComments,
+  showComments: getAllComments,
+  bookmarkArray: getBookMark,
+  obj: getObj,
+};
+
 function render() {
   if (localStorage.getItem("heartArray") !== null) {
     getHeart();
@@ -34,6 +45,9 @@ function render() {
     getBookMark();
   }
 
+  if (localStorage.getItem("obj") !== null) {
+    getObj();
+  }
   renderProfiles();
   renderPosts();
   renderSuggestions();
@@ -69,12 +83,28 @@ function renderSuggestions() {
 function getTopContent(index) {
   let profile = profiles[index];
   return /*html*/ `
-    <div class="top-profile">
+    <div id="topProfile${index}" class="top-profile" onclick="showFullProfile(${index})">
       <div class="img-container">
         <img src="${profile["profileImage"]}" alt="">
       </div>
-      <span>${profile["userName"]}</span>
+      <span id="topUserName${index}">${profile["userName"]}</span>
     </div>`;
+}
+
+function showFullProfile(index) {
+  let profile = profiles[index];
+  let fullPofileBg = document.getElementById("fullProfileBg");
+  let fullProfileUser = document.getElementById("fullProfileUser");
+  let fullProfile = document.getElementById("fullProfile");
+
+  fullProfileUser.innerHTML = `${profile["userName"]}`;
+  fullProfile.src = profile["profileImage"];
+  fullProfileBg.classList.remove("d-none");
+}
+
+function hideFullProfile() {
+  let fullPofileBg = document.getElementById("fullProfileBg");
+  fullProfileBg.classList.add("d-none");
 }
 
 function getPost(index) {
@@ -98,7 +128,7 @@ function getSuggestions(index) {
   return /*html*/ `
   <div class="suggestions">
     <div class="suggestions-profile">
-      <img src="${profile["profileImage"]}" alt="">
+      <img src="${profile["profileImage"]}" alt="" onclick="showFullProfile(${index})">
       <div class="column">
         <span>${profile["userName"]}</span>
         <span class="text-blue">Suggested for you</span>
@@ -114,7 +144,7 @@ function getSuggestions(index) {
 function getPostProfile(index, pIndex) {
   let post = posts[index];
   return /*html*/ `      
-    <img  src="${profiles[pIndex]["profileImage"]}">
+    <img  src="${profiles[pIndex]["profileImage"]}" onclick="showFullProfile(${index})">
     <div class="column">
       <b>${post["userName"]}</b>
       <span>${post["location"]}</span>
@@ -178,7 +208,7 @@ function showAllComments(index) {
     comment.classList.add("d-none");
     showComment.innerHTML = `show all ${post["comments"].length} comments`;
   }
-  saveAllComments();
+  saveObj();
 }
 
 /**In getPostComments */
@@ -192,6 +222,7 @@ function addComment(index) {
     post["comments"].push(input.value);
     post["commentUser"].push(profile["userName"]);
     saveComments();
+    saveObj();
     render();
   }
 }
@@ -205,8 +236,7 @@ function plusHeartIcon(index) {
     post["heart"] = !post["heart"];
     post["likes"] = post["likes"] + 1;
   }
-  saveHeart();
-  saveLikes();
+  saveObj();
   render();
 }
 
@@ -238,7 +268,7 @@ function switchBookmarkIcon(index) {
   const img = document.getElementById(`bookmarkIcon${index}`);
   let post = posts[index];
   post["bookmark"] = !post["bookmark"];
-  saveBookMark();
+  saveObj();
   render();
 }
 
@@ -252,8 +282,7 @@ function switchHeartIcon(index) {
   } else {
     post["likes"] = post["likes"] + 1;
   }
-  saveHeart();
-  saveLikes();
+  saveObj();
   render();
 }
 
@@ -265,7 +294,7 @@ function getCommentProfiles(index, commentUsers, comments) {
     commentProfiles += /*html*/ `
         <div id="commentProfile" class="comment-profile">
           <div class="row">
-            <img class="comment-profile-img" src="${profiles[pIndex]["profileImage"]}" alt="">
+            <img class="comment-profile-img" src="${profiles[pIndex]["profileImage"]}" alt="" onclick="showFullProfile(${pIndex})">
             <div class="column comment-profile-content">          
               <b>${commentUsers[i]}</b> <span >${comments[i]}</span>
             </div>
@@ -283,6 +312,7 @@ function deleteComment(i, index) {
   post["comments"].splice(i, 1);
   post["commentUser"].splice(i, 1);
   saveComments();
+  saveObj();
   render();
 }
 
@@ -341,6 +371,15 @@ function saveBookMark() {
   localStorage.setItem("bookmarkArray", JSON.stringify(arr));
 }
 
+function saveObj() {
+  localStorage.setItem("obj", JSON.stringify(posts));
+}
+
+function getObj() {
+  const item = localStorage.getItem("obj");
+  posts = JSON.parse(item);
+}
+
 function getBookMark() {
   const item = localStorage.getItem("bookmarkArray");
   let arr = JSON.parse(item);
@@ -382,6 +421,40 @@ function getComments() {
     posts[i]["comments"] = arr1[i];
     posts[i]["commentUser"] = arr2[i];
   }
+}
+
+function closeFullEdit() {
+  let element = document.getElementById("fullEdit");
+  element.classList.add("d-none");
+}
+
+function openFullEdit() {
+  let element = document.getElementById("fullEdit");
+  element.classList.remove("d-none");
+}
+
+function saveFullEdit() {
+  let text = document.getElementById("textarea");
+  let input = document.getElementById("editInput");
+  let element = document.getElementById("fullEdit");
+  element.classList.add("d-none");
+  console.log(text.value);
+  console.log(input.value);
+  let obj = {
+    userName: "HanbitChang",
+    location: "Maastricht, Netherlands",
+    headline: input.value,
+    image: "/bitGram/assets/imgs/posts/16.jpg",
+    heart: true,
+    bookmark: true,
+    showComments: true,
+    comments: [],
+    commentUser: [],
+    likes: 0,
+  };
+  posts.push(obj);
+  saveObj();
+  render();
 }
 
 async function printJSON() {

@@ -26,13 +26,11 @@ footer {
 
 header {
   position: fixed;
-  background-color: #c25757;
   width: 15%;
   height: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgb(143, 135, 135, 0.2);
+  flex-direction: column;
+  border-right: 1px solid rgb(143, 135, 135, 0.2);
 }
 
 .container {
@@ -107,6 +105,7 @@ header {
   align-items: center;
   justify-content: space-between;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .suggestions:hover {
@@ -132,6 +131,7 @@ header {
 
 .post-card {
   width: 100%;
+  justify-content: space-between;
   max-width: 500px;
   margin-bottom: 30px;
   padding-bottom: 30px;
@@ -149,6 +149,7 @@ header {
   border-radius: 50%;
   object-fit: cover;
   margin-right: 8px;
+  cursor: pointer;
 }
 
 .foto-box {
@@ -178,11 +179,11 @@ header {
   justify-content: space-between;
   padding: 6px;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .comment-profile:hover {
   background-color: #c9c9c9;
-  cursor: pointer;
 }
 
 .delete-btn {
@@ -249,6 +250,7 @@ header {
 .icon {
   width: 30px;
   height: 30px;
+  cursor: pointer;
 }
 
 .text-btn,
@@ -276,6 +278,34 @@ header {
   outline: none !important;
 }
 
+.full-profile-bg {
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.full-profile {
+  width: 500px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.full-profile-user {
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
 .d-none {
   display: none;
 }
@@ -292,6 +322,10 @@ header {
 }
 
 .jc-spacebtw {
+  justify-content: space-between;
+}
+
+.jc-center {
   justify-content: space-between;
 }
 
