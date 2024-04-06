@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+      footer {
+        height: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid rgb(143, 135, 135, 0.2);
+      }
+
       .footer-img {
         width: 48px;
       }
@@ -45,6 +54,12 @@
 
       .copy-right {
         display: flex;
+      }
+
+      @media screen and (max-width: 768px) {
+        footer {
+          display: none;
+        }
       }
 
       @media screen and (max-width: 550px) {

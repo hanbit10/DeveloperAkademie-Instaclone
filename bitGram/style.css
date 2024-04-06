@@ -9,36 +9,12 @@ span {
   font-size: 14px;
 }
 
-footer {
-  margin-left: 60px;
-  padding-right: 10px;
-}
-
-footer {
-  width: 270px;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid rgb(143, 135, 135, 0.2);
-}
-
-header {
-  position: fixed;
-  width: 15%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid rgb(143, 135, 135, 0.2);
-}
-
 .container {
   padding-top: 30px;
   margin-left: 15%;
   min-height: 100vh;
   max-width: 85%;
-  background-color: rgb(232, 232, 232);
+  background-color: #e8e8e8;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -46,7 +22,7 @@ header {
 
 .content {
   width: 100%;
-  max-width: 680px;
+  max-width: 670px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -123,6 +99,11 @@ header {
   object-fit: cover;
   border-radius: 50%;
   margin: 8px;
+}
+
+.suggestion-section {
+  width: 270px;
+  padding-left: min(50px, 10%);
 }
 
 .post-content {
@@ -334,30 +315,24 @@ header {
 } */
 
 @media screen and (max-width: 1200px) {
-  header {
-    position: fixed;
-    background-color: #c25757;
-    width: 8%;
-  }
-
-  .suggestionsSection {
-    display: none;
-  }
-
   .container {
     margin-left: 8%;
     max-width: 92%;
   }
+
+  .suggestion-section {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    margin: 0;
+    max-width: 100%;
+  }
 }
 
 @media screen and (max-width: 480px) {
-  footer,
-  section,
-  header {
-    padding-left: min(160px, 1%);
-    padding-right: min(160px, 1%);
-  }
-
   .foto-box {
     /* height: 80px; */
     margin: 2px;

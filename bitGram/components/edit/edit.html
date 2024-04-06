@@ -87,32 +87,27 @@
     <link rel="stylesheet" href="/bitGram/style.css" />
   </head>
   <body>
-    <header w3-include-html="/bitGram/components/header/header.html"></header>
-    <section class="container">
-      <div id="content" class="content">
-        <div id="fullEdit" class="full-edit d-none">
-          <div id="fulleditContainer" class="full-edit-container">
-            <div class="full-edit-title">
-              <div class="close-btn" onclick="closeFullEdit()">xxxxxxxxx</div>
-              <b>Create a new post</b>
-              <div class="edit-btn" onclick="saveFullEdit()">Edit</div>
-            </div>
-            <div class="full-edit-content">
-              <img class="full-edit-img" src="/bitGram/assets//imgs/posts/16.jpg" alt="" />
+    <div id="fullEdit" class="full-edit d-none">
+      <div id="fulleditContainer" class="full-edit-container">
+        <div class="full-edit-title">
+          <div class="close-btn" onclick="closeFullEdit()">X</div>
+          <b>Create a new post</b>
+          <div class="edit-btn" onclick="saveFullEdit()">Edit</div>
+        </div>
+        <div class="full-edit-content">
+          <img class="full-edit-img" src="/bitGram/assets//imgs/posts/16.jpg" alt="" />
 
-              <div class="column">
-                <div class="row">
-                  <img class="full-edit-profile" src="/bitGram/assets/imgs/profilpicture/2hbc.jpg" alt="" />
-                  <div><b>HanbitChang</b></div>
-                </div>
-                <input id="editInput" type="text" placeholder="edit headline" />
-                <textarea name="text" id="textarea" cols="30" rows="10" placeholder="write a text"></textarea>
-              </div>
+          <div class="column">
+            <div class="row">
+              <img class="full-edit-profile" src="/bitGram/assets/imgs/profilpicture/2hbc.jpg" alt="" />
+              <div><b>HanbitChang</b></div>
             </div>
+            <input id="editInput" type="text" placeholder="edit headline" />
+            <textarea name="text" id="textarea" cols="30" rows="10" placeholder="write a text"></textarea>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
     <script>
       includeHTML();

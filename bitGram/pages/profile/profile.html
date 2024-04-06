@@ -5,17 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="./profile.js"></script>
-    <script src="/bitGram/script.js"></script>
     <link rel="stylesheet" href="/bitGram/style.css" />
     <style>
-      .profile {
+      .footer {
         width: 100%;
+        max-width: 1200px;
+        height: 200px;
+        flex-direction: row;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container-profile {
+        padding-top: 30px;
+        margin-left: 15%;
+        max-width: 85%;
+        background-color: #e8e8e8;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+        align-items: center;
+      }
+
+      .profile-section {
+        width: 85%;
+        max-width: 1200px;
         display: flex;
       }
 
       .profile-img {
         width: 100%;
         max-width: 200px;
+        max-height: 200px;
         aspect-ratio: 1/1;
         object-fit: cover;
         border-radius: 50%;
@@ -24,22 +46,27 @@
       }
 
       .profile-status {
-        margin-left: 50px;
+        margin-left: min(50px, 5%);
       }
 
       .post-section {
-        width: 100%;
+        width: 85%;
+        max-width: 1200px;
+        min-height: 100vh;
         margin-top: 30px;
         border-top: 0.1px solid rgba(86, 86, 86, 0.285);
       }
 
       .post-content {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        width: 100%;
         margin-top: 30px;
       }
 
       .get-post {
-        width: 100%;
-        max-width: 390px;
+        width: 33.333%;
         aspect-ratio: 1/1;
         object-fit: cover;
       }
@@ -47,10 +74,6 @@
       .user-name {
         font-size: 24px;
         margin-bottom: 30px;
-      }
-
-      .content {
-        max-width: 1200px;
       }
 
       .mr-30 {
@@ -61,37 +84,69 @@
         padding-top: 30px;
         max-width: 550px;
       }
+
+      @media screen and (max-width: 1200px) {
+        .container-profile {
+          margin-left: 8%;
+          max-width: 92%;
+        }
+
+        .profile-img {
+          max-width: 100px;
+          max-height: 100px;
+          margin: min(30px, 5%);
+          margin-top: 20px;
+        }
+
+        .profile-status {
+          margin-left: min(30px, 5%);
+          margin-right: min(30px, 5%);
+        }
+      }
+
+      @media screen and (max-width: 767px) {
+        .container-profile {
+          margin-left: 0;
+          max-width: 100%;
+        }
+
+        .profile-img {
+          max-width: 70px;
+          max-height: 70px;
+          margin: min(10px, 5%);
+          margin-top: 20px;
+        }
+      }
     </style>
   </head>
   <body onload="render()">
     <header w3-include-html="/bitGram/components/header/header.html"></header>
-    <section class="container">
-      <div id="content" class="content">
-        <section id="profile" class="profile">
-          <img id="profileImg" class="profile-img" src="" alt="" />
-          <div class="profile-status">
-            <div id="profileContent" class="profile-content"></div>
-            <div class="row">
-              <span class="mr-30"><b>384</b> followers</span>
-              <span class="mr-30"><b>109</b> following</span>
-            </div>
-            <div class="profile-text">
-              <b> I am Web Developer </b>
-              <br />
-              <span>
-                🚀 Just finished an exhilarating bootcamp with Developer Akademie and crafted my very own InstaClone! 💻 Ready to dive into
-                the world of coding and unleash creativity! 🌟 #DeveloperAkademie #CodeLife #InstaCloneJourney"
-              </span>
-            </div>
+    <section class="container-profile">
+      <div id="profile" class="profile-section">
+        <img id="profileImg" class="profile-img" src="" alt="" />
+        <div class="profile-status">
+          <div id="profileContent" class="profile-content"></div>
+          <div class="row">
+            <span class="mr-30"><b>384</b> followers</span>
+            <span class="mr-30"><b>109</b> following</span>
           </div>
-        </section>
-        <section class="post-section">
-          <div id="posts" class="post-content"></div>
-        </section>
+          <div class="profile-text">
+            <b> I am Web Developer </b>
+            <br />
+            <span>
+              🚀 Just finished an exhilarating bootcamp with Developer Akademie and crafted my very own InstaClone! 💻 Ready to dive into
+              the world of coding and unleash creativity! 🌟 #DeveloperAkademie #CodeLife #InstaCloneJourney"
+            </span>
+          </div>
+        </div>
       </div>
+      <div class="post-section">
+        <div id="posts" class="post-content"></div>
+      </div>
+      <footer class="footer" w3-include-html="/bitGram/components/footer/footer.html"></footer>
     </section>
     <div w3-include-html="/bitGram/components/edit/edit.html"></div>
-    <footer w3-include-html="/bitGram/components/footer/footer.html"></footer>
+
     <script>
       includeHTML();
     </script>
