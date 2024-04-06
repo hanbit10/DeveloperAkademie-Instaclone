@@ -54,13 +54,12 @@ function renderSuggestions() {
 }
 
 /**get each content*/
-
 function getTopContent(index) {
   let profile = profiles[index];
   return /*html*/ `
     <div id="topProfile${index}" class="top-profile" onclick="showFullProfile(${index})">
       <div class="img-container">
-        <img src="${profile["profileImage"]}" alt="">
+        <img id="topImage${index}" src=${profile["profileImage"]}  alt="">
       </div>
       <span id="topUserName${index}">${profile["userName"]}</span>
     </div>`;
